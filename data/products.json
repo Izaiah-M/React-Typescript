@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "name": "Yellow yoghurt",
+      "description": "A smooth, creamy yellow dairy product.",
+      "price": 4.99
+    },
+    {
+      "id": "p002",
+      "name": "Cheesy Tats",
+      "description": "A Crispy treat",
+      "price": 5.99
+    },
+    {
+      "id": "p003",
+      "name": "Water",
+      "description": "Nice sparkling water",
+      "price": 1.78
+    }
+  ]
+}
