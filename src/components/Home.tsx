@@ -1,27 +1,40 @@
 import { useEffect } from "react";
-import { fetchItems, selectAllItems } from "../features/ItemsSlice";
+import { fetchItems } from "../features/ItemsSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
+import Nav from "./Nav";
+import { selectCartItems, selectTotalPrice } from "../features/CartSlice";
 
-const Home = () => {
+type PropTypes = {
+  viewCart: boolean;
+  setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Home = ({ viewCart, setViewCart }: PropTypes) => {
   const dispatch = useAppDispatch();
-
-  const data = useAppSelector(selectAllItems);
+  const cartItems = useAppSelector(selectCartItems);
+  const totalPrice = useAppSelector(selectTotalPrice);
 
   useEffect(() => {
     dispatch(fetchItems());
   }, []);
 
-  return (
-    <div>
-      {data.map((item, key) => {
-        return (
-          <p style={{ color: "yellow" }} key={key}>
-            {item.name}
-          </p>
-        );
-      })}
-    </div>
+  const content = (
+    <>
+      <header>
+        <div>
+          <h1>Company Name co.</h1>
+
+          <div>
+            <p>Total Items: {cartItems.length}</p>
+            <p>Total Price: ${totalPrice}</p>
+          </div>
+        </div>
+        <Nav viewCart={viewCart} setViewCart={setViewCart} />
+      </header>
+    </>
   );
+
+  return content;
 };
 
 export default Home;
