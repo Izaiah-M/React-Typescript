@@ -17,7 +17,7 @@ const ProductList = () => {
 
   if (data?.length) {
     pageContent = data.map((product, key) => {
-      const incart: boolean[] = cartItems.map(
+      const incart: boolean = cartItems.some(
         (cartitem) => cartitem.id === product.id
       );
 

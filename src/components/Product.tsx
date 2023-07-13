@@ -4,7 +4,7 @@ import { useAppDispatch } from "../app/hooks";
 
 type PropTypes = {
   product: Item;
-  incart: boolean[];
+  incart: boolean;
 };
 
 const Product = ({ product, incart }: PropTypes): ReactElement => {
@@ -15,7 +15,7 @@ const Product = ({ product, incart }: PropTypes): ReactElement => {
 
   const onAddToCart = () => dispatch(addItemToCart(product));
 
-  const itemInCart = incart[0] === true ? "--> Item in Cart: 🤙" : null;
+  const itemInCart = incart ? "--> Item in Cart: 🤙" : null;
 
   const content = (
     <article>
