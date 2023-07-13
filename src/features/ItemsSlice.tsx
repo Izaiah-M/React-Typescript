@@ -15,15 +15,18 @@ const initialState: ItemState = {
   isLoading: false,
 };
 
-export const fetchItems = createAsyncThunk("items/fetchItems", async () => {
-  try {
-    const response = await axios.get("http://localhost:4000/products");
+export const fetchItems = createAsyncThunk(
+  "items/fetchItems",
+  async (): Promise<Item[]> => {
+    try {
+      const response = await axios.get("http://localhost:4000/products");
 
-    return response.data;
-  } catch (error) {
-    throw new Error("Something went wrong!");
+      return response.data;
+    } catch (error) {
+      throw new Error("Something went wrong!");
+    }
   }
-});
+);
 
 const ItemsSlice = createSlice({
   name: "items",

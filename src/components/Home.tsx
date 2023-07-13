@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { fetchItems } from "../features/ItemsSlice";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppSelector } from "../app/hooks";
 import Nav from "./Nav";
 import { selectCartItems, selectTotalPrice } from "../features/CartSlice";
 
@@ -10,13 +8,8 @@ type PropTypes = {
 };
 
 const Home = ({ viewCart, setViewCart }: PropTypes) => {
-  const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
   const totalPrice = useAppSelector(selectTotalPrice);
-
-  useEffect(() => {
-    dispatch(fetchItems());
-  }, []);
 
   const content = (
     <>
