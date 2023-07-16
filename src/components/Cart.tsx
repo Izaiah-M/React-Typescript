@@ -13,7 +13,7 @@ const Cart = () => {
   };
 
   const pageContent = confirm ? (
-    <h2>Thank you for your fake order statement</h2>
+    <h2>Thank you for your fake order!</h2>
   ) : (
     <>
       <h2>Cart</h2>
@@ -26,10 +26,17 @@ const Cart = () => {
           );
         })}
       </ul>
+      <button onClick={onSubmitOrder}>Order!</button>
     </>
   );
 
-  return <div></div>;
+  const content = (
+    <>
+      <main>{pageContent}</main>
+    </>
+  );
+
+  return content;
 };
 
 export default Cart;
